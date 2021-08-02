@@ -5,9 +5,9 @@ import android.content.Context;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.rzandjavagit.volleyhelper.CodeMarker;
-import com.rzandjavagit.volleyhelper.HTTPVolleyParserHelper;
-import com.rzandjavagit.volleyhelper.HTTPVolleyRequest;
+import com.rzandjavagit.raw.CodeMarker;
+import com.rzandjavagit.raw.HTTPVolleyParserHelper;
+import com.rzandjavagit.raw.HTTPVolleyRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
