@@ -9,4 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Rz Android Java Git SDK"
 include ":appusagesexample"
 include ":rzandjavagit"
-include ":rzandroid-core"
+include ':rzandjavagit-core'
