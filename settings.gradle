@@ -9,4 +9,5 @@ dependencyResolutionManagement {
 rootProject.name = "Rz Android Java Git SDK"
 include ":appusagesexample"
 include ":rzandjavagit"
-include ':rzandjavagit-core'
+include ":rzandjavagit-core"
+include ":rzandjavagit-volleyhelper"

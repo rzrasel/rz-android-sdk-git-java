@@ -1,9 +1,9 @@
 plugins {
     id "com.android.library"
 }
-project.ext.name = "Rz-Android-Java-Core-Git-SDK"
-project.ext.artifactId = "rzandjavagit-core"
-project.ext.description = "Rz Android Java Core Git SDK"
+project.ext.name = "Rz-Android-Java-Volley-Helper-Git-SDK"
+project.ext.artifactId = "rzandjavagit-volleyhelper"
+project.ext.description = "Rz Android Java Volley Helper Git SDK"
 project.ext.url = "https://github.com/rzrasel/rzandroid-java-sdk"
 android {
     //compileSdk 30
@@ -24,18 +24,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"*/
-        //
-        /*def date = new Date()
-        def formattedDate = date.format("yyyy-MM-dd")
-        //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
-        def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
-        setProperty("archivesBaseName", "$apkName")*/
     }
 
     buildTypes {
-        debug {
-            debuggable true
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"

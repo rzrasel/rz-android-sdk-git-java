@@ -54,6 +54,7 @@ dependencies {
     //
     implementation project(path: ":rzandjavagit")
     implementation project(path: ":rzandjavagit-core")
+    implementation project(path: ":rzandjavagit-volleyhelper")
 }
 /*
 logger.error("An error log message. ${compileSdk}")
