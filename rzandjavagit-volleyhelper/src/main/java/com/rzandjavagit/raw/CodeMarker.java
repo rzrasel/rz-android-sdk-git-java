@@ -1,6 +1,6 @@
-package com.rzandjavagit.volleyhelper;
+package com.rzandjavagit.raw;
 
-public @interface FieldName {
+public @interface CodeMarker {
     /**
      * @return the desired name of the field when it is serialized or deserialized
      */
