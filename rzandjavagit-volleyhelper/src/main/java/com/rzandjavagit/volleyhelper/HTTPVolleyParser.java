@@ -24,13 +24,13 @@ public class HTTPVolleyParser {
     private String cacheKey = "CacheHTTPVolleyParser";
 
     public HTTPVolleyParser(Context argContext) {
-        System.out.println("(HTTPVolleyParser): constructor ");
+        //System.out.println("(HTTPVolleyParser): constructor ");
         context = argContext;
         httpVolleyRequest = new HTTPVolleyRequest(context);
     }
 
     public HTTPVolleyParser setEventListener(EventListenerHandler argEventListener) {
-        System.out.println("(HTTPVolleyParser): setEventListener ");
+        //System.out.println("(HTTPVolleyParser): setEventListener ");
         eventListener = argEventListener;
         return this;
     }
@@ -87,7 +87,7 @@ public class HTTPVolleyParser {
                 .setEventListener(new HTTPVolleyRequest.EventListenerHandler() {
                     @Override
                     public void onResponse(String argResponse) {
-                        System.out.println("DEBUG_LOG_PRINT (HTTPVolleyParser): Response " + argResponse);
+                        //System.out.println("DEBUG_LOG_PRINT (HTTPVolleyParser): Response " + argResponse);
                         Gson gson = new Gson();
                         if (modelClass != null) {
                             Type typeToken = HTTPVolleyParserHelper.getTypeToken(modelClass);
@@ -106,7 +106,7 @@ public class HTTPVolleyParser {
 
                     @Override
                     public void onError(VolleyError argVolleyError) {
-                        System.out.println("DEBUG_LOG_PRINT (HTTPVolleyParser): Error " + argVolleyError.toString());
+                        //System.out.println("DEBUG_LOG_PRINT (HTTPVolleyParser): Error " + argVolleyError.toString());
                         //Toast.makeText(context, "Invalid request", Toast.LENGTH_LONG).show();
                         if (eventListener != null) {
                             eventListener.onError(argVolleyError);
@@ -115,7 +115,7 @@ public class HTTPVolleyParser {
 
                     @Override
                     public void onError(VolleyError argVolleyError, String argStatusCode, String argErrorMessage) {
-                        System.out.println("DEBUG_LOG_PRINT (HTTPVolleyParser): Error " + argStatusCode);
+                        //System.out.println("DEBUG_LOG_PRINT (HTTPVolleyParser): Error " + argStatusCode);
                         if (eventListener != null) {
                             eventListener.onError(argVolleyError, argStatusCode, argErrorMessage);
                         }
