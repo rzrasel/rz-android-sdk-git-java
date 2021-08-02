@@ -11,3 +11,4 @@ include ":appusagesexample"
 include ":rzandjavagit"
 include ":rzandjavagit-core"
 include ":rzandjavagit-volleyhelper"
+include ':rzandjavagit-sparkedslidingview'
