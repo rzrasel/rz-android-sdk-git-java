@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SparkedSlidingPane">
+        <attr name="offset" format="dimension" />
+        <attr name="duration" format="integer" />
+    </declare-styleable>
+
+</resources>
