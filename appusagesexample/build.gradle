@@ -24,7 +24,8 @@ android {
         def date = new Date()
         def formattedDate = date.format("yyyy-MM-dd")
         //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
-        def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v-" + defaultConfig.versionName
+        //def apkName = "$project.name" + "-" + formattedDate + "-v" + defaultConfig.versionName
         setProperty("archivesBaseName", "$apkName")
     }
 

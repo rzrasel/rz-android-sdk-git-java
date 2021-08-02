@@ -18,12 +18,6 @@ android {
         versionName project.ext.coreConfig.versionName*/
         consumerProguardFiles "proguard-rules.pro"
 
-        //
-        /*def date = new Date()
-        def formattedDate = date.format("yyyy-MM-dd")
-        //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
-        def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
-        setProperty("archivesBaseName", "$apkName")*/
         /*minSdk 21
         targetSdk 30
         versionCode 1
@@ -31,6 +25,13 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"*/
+        //
+        def date = new Date()
+        def formattedDate = date.format("yyyy-MM-dd")
+        //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        //def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        def apkName = "$project.name" + "-v-" + project.ext.coreConfig.versionName
+        setProperty("archivesBaseName", "$apkName")
     }
 
     buildTypes {
