@@ -55,6 +55,10 @@ dependencies {
     //
     implementation project(path: ":rzandjavagit")
     implementation project(path: ":rzandjavagit-core")
+    //
+    implementation project(path: ":rzandjavagit-propermission")
+    implementation project(path: ":rzandjavagit-propreferences")
+    implementation project(path: ":rzandjavagit-sparkedslidingview")
     implementation project(path: ":rzandjavagit-volleyhelper")
 }
 /*
