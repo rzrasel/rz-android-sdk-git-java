@@ -1,24 +1,45 @@
 plugins {
-    id 'com.android.library'
+    id "com.android.library"
 }
-
+project.ext.name = "Rz-Android-Java-Core-Git-SDK"
+project.ext.artifactId = "rzandjavagit-sparkedslidingview"
+project.ext.description = "Rz Android Java Sparked Sliding View Git SDK"
+project.ext.url = "https://github.com/rzrasel/rzandroid-java-sdk"
 android {
-    compileSdk 30
+    //compileSdk 30
+    compileSdk project.ext.coreConfig.compileSdk
 
     defaultConfig {
-        minSdk 21
+        minSdk project.ext.coreConfig.minSdk
+        targetSdk project.ext.coreConfig.targetSdk
+
+        /*versionCode project.ext.coreConfig.versionCode
+        versionName project.ext.coreConfig.versionName*/
+        consumerProguardFiles "proguard-rules.pro"
+
+        /*minSdk 21
         targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFiles "consumer-rules.pro"*/
+        //
+        def date = new Date()
+        def formattedDate = date.format("yyyy-MM-dd")
+        //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        //def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        def apkName = "$project.name" + "-v-" + project.ext.coreConfig.versionName
+        setProperty("archivesBaseName", "$apkName")
     }
 
     buildTypes {
+        debug {
+            debuggable true
+        }
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
     compileOptions {
@@ -29,9 +50,9 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "androidx.appcompat:appcompat:1.3.1"
+    implementation "com.google.android.material:material:1.4.0"
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
 }
