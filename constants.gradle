@@ -6,10 +6,10 @@ project.ext {
             minSdk              : 16,
             targetSdk           : 30,
             buildToolsVersion   : "30.0.3",
-            versionCode         : 101,
-            versionName         : "1.0.1.0",
             gradleVersion       : "7.0.0",
             APP_NAME            : "Rz Android Java Git SDK",
+            versionCode         : 102,
+            versionName         : "1.0.2",
     ]
     // Support Libraries dependencies
     supportDependencies = [
