@@ -9,7 +9,7 @@ ProSpotlight is an Android library used to onboard users by showcasing specific 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Spotlight-green.svg?style=flat)](http://android-arsenal.com/details/1/3730)
 
 # Screen
-<img src="/art/intro.gif"/>
+<img src="https://github.com/rzrasel/rzandroid-java-sdk/blob/217e2619b83a418ca1e83cc2e8d2aa5060547028/rzandjavagit-prospotlightview/art/intro.gif"/>
 
 # Usage
 ```java
