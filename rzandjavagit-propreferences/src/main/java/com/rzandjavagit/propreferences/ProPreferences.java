@@ -302,8 +302,6 @@ public class ProPreferences {
         }*/
     }
 }
-//https://github.com/Pixplicity/EasyPrefs
-//https://github.com/aosp-mirror/platform_frameworks_base
 
 /**
  * ProPreferences class usages
