@@ -1,4 +1,4 @@
-EasyPrefs
+ProPreferences
 ===
 
 **Deprecation notice:** Since the arrival of Kotlin it has become easy to use the preferences in a typesafe manner without much boilerplate, for example, using [this method](https://medium.com/swlh/sharedpreferences-in-android-using-kotlin-6d3bb4ffb71c). We advice to skip EasyPrefs for your next project.
