@@ -1,5 +1,5 @@
 # rzandroid-java-sdk
-Rz Android Java SDK
+Rz Android Java Git SDK
 
 ### GIT Command
 ```git_command

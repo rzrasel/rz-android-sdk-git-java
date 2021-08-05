@@ -7,7 +7,7 @@ project.ext {
             targetSdk           : 30,
             buildToolsVersion   : "30.0.3",
             versionCode         : 101,
-            versionName         : "1.0.1",
+            versionName         : "1.0.1.0",
             gradleVersion       : "7.0.0",
             APP_NAME            : "Rz Android Java Git SDK",
     ]

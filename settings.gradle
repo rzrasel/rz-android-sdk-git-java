@@ -13,5 +13,6 @@ include ":rzandjavagit-core"
 //
 include ":rzandjavagit-propermission"
 include ":rzandjavagit-propreferences"
+include ":rzandjavagit-prospotlightview"
 include ":rzandjavagit-sparkedslidingview"
 include ":rzandjavagit-volleyhelper"
