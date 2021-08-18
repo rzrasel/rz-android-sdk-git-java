@@ -137,11 +137,18 @@ public class ProExternalStorage {
         return getThis().onDirectory(null, argDirectoryName, argFileName);
     }*/
     public static String getBaseDir(Context argContext, boolean argIsMkDirs) {
-        String baseDir;
+        return getBaseDir(argContext, null, argIsMkDirs);
+    }
+
+    public static String getBaseDir(Context argContext, String argDirName, boolean argIsMkDirs) {
+        String baseDir = argDirName;
+        if (baseDir == null) {
+            baseDir = "";
+        }
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
+            baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + baseDir;
         } else {
-            baseDir = "/data/data/" + argContext.getApplicationContext().getPackageName() + "/";
+            baseDir = "/data/data/" + argContext.getApplicationContext().getPackageName() + "/" + baseDir;
         }
         File file = new File(baseDir);
         if (argIsMkDirs) {
