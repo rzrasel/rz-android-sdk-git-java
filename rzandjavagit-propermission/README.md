@@ -65,4 +65,18 @@ public void onRequestPermissionsResult(int argRequestCode, @NonNull String[] arg
     super.onRequestPermissionsResult(argRequestCode, argPermissions, argGrantResults);
     proPermission.onRequestPermissionsResult(argPermissions, argGrantResults);
 }
+
+
+/**
+ * Permission setup step 4:
+ */
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    //
+    activity = this;
+    context = this;
+    setContentView(R.layout.splash_screen);
+    onPermissionSetup();
+}
 ```
