@@ -136,6 +136,16 @@ public class ProExternalStorage {
     /*public static String getStorageDir(String argDirectoryName, String argFileName) {
         return getThis().onDirectory(null, argDirectoryName, argFileName);
     }*/
+    public static String getBaseDir(Context argContext) {
+        String baseDir;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            baseDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/";
+        } else {
+            baseDir = "/data/data/" + argContext.getApplicationContext().getPackageName() + "/";
+        }
+
+        return baseDir;
+    }
 
     private String onDirectoryEnvPath(Context argContext, String argDirectoryName) {
         String directoryName = "";
