@@ -143,15 +143,15 @@ public class ProExternalStorage {
         } else {
             baseDir = "/data/data/" + argContext.getApplicationContext().getPackageName() + "/";
         }
+        File file = new File(baseDir);
         if (argIsMkDirs) {
-            File file = new File(baseDir);
             if (!file.exists()) {
                 if (!file.mkdirs()) {
                     file.mkdirs();
                 }
             }
         }
-        return baseDir;
+        return file.getAbsolutePath();
     }
 
     private String onDirectoryEnvPath(Context argContext, String argDirectoryName) {
