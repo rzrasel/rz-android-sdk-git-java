@@ -3,7 +3,7 @@ package com.rzandjavagit.prohttprequest;
 
 public class Test {
     public NetHttpMultipart netHttpMultipart;
-    public RequestBuilder requestBuilder;
+    public ProRequestBuilder requestBuilder;
 
     public Test() {
         RequestParameter requestParameter = new RequestParameter();
@@ -11,7 +11,7 @@ public class Test {
                 .setQuery("", "")
                 .setField("", "")
                 .setFile("", "", "");
-        requestBuilder = new RequestBuilder();
+        requestBuilder = new ProRequestBuilder();
         requestBuilder
                 //.setParameter(requestParameter)
                 .setTokenAuth("token")

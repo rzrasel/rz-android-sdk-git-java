@@ -7,10 +7,10 @@ import com.rzandjavagit.prohttprequest.http.Http;
 import java.util.List;
 import java.util.Map;
 
-public class RequestBuilder extends Http {
+public class ProRequestBuilder extends Http {
     private RequestParameter requestParameter;
 
-    public RequestBuilder() {
+    public ProRequestBuilder() {
     }
 
     /*public RequestBuilder setUrl(String argUrl) {
@@ -23,53 +23,53 @@ public class RequestBuilder extends Http {
         return this;
     }*/
 
-    public RequestBuilder setProperty(String argKey, String argValue) {
+    public ProRequestBuilder setProperty(String argKey, String argValue) {
         super.parameter().property().setProperty(argKey, argValue);
         return this;
     }
 
-    public RequestBuilder setProperty(Map<String, String> argParams) {
+    public ProRequestBuilder setProperty(Map<String, String> argParams) {
         super.parameter().property().setProperty(argParams);
         return this;
     }
 
-    public RequestBuilder setAuthorization(String argValue) {
+    public ProRequestBuilder setAuthorization(String argValue) {
         this.setAuthorization("Authorization", argValue);
         return this;
     }
 
-    public RequestBuilder setAuthorization(String argKey, String argValue) {
+    public ProRequestBuilder setAuthorization(String argKey, String argValue) {
         super.parameter().property().setProperty(argKey, argValue);
         return this;
     }
 
-    public RequestBuilder setTokenAuth(String argValue) {
+    public ProRequestBuilder setTokenAuth(String argValue) {
         this.setAuthorization("Authorization", "Token " + argValue);
         return this;
     }
 
-    public RequestBuilder setContentType() {
+    public ProRequestBuilder setContentType() {
         this.setContentType("Content-Type", "application/x-www-form-urlencoded");
         return this;
     }
 
-    public RequestBuilder setContentType(String argValue) {
+    public ProRequestBuilder setContentType(String argValue) {
         this.setContentType("Content-Type", argValue);
         return this;
     }
 
-    public RequestBuilder setContentType(String argKey, String argValue) {
+    public ProRequestBuilder setContentType(String argKey, String argValue) {
         super.parameter().property().setProperty(argKey, argValue);
         return this;
     }
 
     //|----------------------------------------------------------------|
-    public RequestBuilder setFile(String argKey, String argFileName, String argFilePath) {
+    public ProRequestBuilder setFile(String argKey, String argFileName, String argFilePath) {
         super.parameter().file().setFile(argKey, argFileName, argFilePath);
         return this;
     }
 
-    public RequestBuilder setFile(List<FileInfo> argParams) {
+    public ProRequestBuilder setFile(List<FileInfo> argParams) {
         super.parameter().file().setFile(argParams);
         return this;
     }

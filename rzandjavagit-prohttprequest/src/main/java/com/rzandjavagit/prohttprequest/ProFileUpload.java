@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ProFileUpload {
-    private RequestBuilder requestBuilder;
+    private ProRequestBuilder requestBuilder;
     private Method method;
     //
     private HttpURLConnection httpURLConnection;
@@ -42,7 +42,7 @@ public class ProFileUpload {
     public ProFileUpload() {
     }
 
-    public ProFileUpload requestBuilder(RequestBuilder argRequestBuilder) {
+    public ProFileUpload requestBuilder(ProRequestBuilder argRequestBuilder) {
         requestBuilder = argRequestBuilder;
         return this;
     }

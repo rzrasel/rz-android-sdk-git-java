@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NetHttpMultipart {
-    private RequestBuilder requestBuilder;
+    private ProRequestBuilder requestBuilder;
     private HttpURLConnection httpURLConnection;
     private DataOutputStream dataOutputStream;
     private final String boundary = "*****";
@@ -29,7 +29,7 @@ public class NetHttpMultipart {
     /*public NetHttpMultipart() {
     }*/
 
-    public NetHttpMultipart requestBuilder(RequestBuilder argRequestBuilder, Method argMethod) {
+    public NetHttpMultipart requestBuilder(ProRequestBuilder argRequestBuilder, Method argMethod) {
         requestBuilder = argRequestBuilder;
         return this;
     }
