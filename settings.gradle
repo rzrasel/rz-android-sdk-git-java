@@ -11,6 +11,7 @@ include ":appusagesexample"
 include ":rzandjavagit"
 include ":rzandjavagit-core"
 //
+include ":rzandjavagit-proaudiorecorder"
 include ":rzandjavagit-proexternalstorage"
 include ":rzandjavagit-prohttprequest"
 include ":rzandjavagit-propermission"
