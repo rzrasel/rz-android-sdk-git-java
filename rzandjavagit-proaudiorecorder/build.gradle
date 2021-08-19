@@ -1,18 +1,36 @@
 plugins {
     id 'com.android.library'
 }
-
+project.ext.name = "Rz-Android-Java-Pro-Audio-Recorder-Git-SDK"
+project.ext.artifactId = "rzandjavagit-proaudiorecorder"
+project.ext.description = "Rz Android Java Pro Audio Recorder Git SDK"
+project.ext.url = "https://github.com/rzrasel/rzandroid-java-sdk"
 android {
-    compileSdk 30
+    //compileSdk 30
+    compileSdk project.ext.coreConfig.compileSdk
 
     defaultConfig {
-        minSdk 16
+        minSdk project.ext.coreConfig.minSdk
+        targetSdk project.ext.coreConfig.targetSdk
+
+        /*versionCode project.ext.coreConfig.versionCode
+        versionName project.ext.coreConfig.versionName*/
+        consumerProguardFiles "proguard-rules.pro"
+
+        /*minSdk 16
         targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        consumerProguardFiles "consumer-rules.pro"*/
+        //
+        def date = new Date()
+        def formattedDate = date.format("yyyy-MM-dd")
+        //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        //def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v-" + defaultConfig.versionName
+        def apkName = "$project.name" + "-v-" + project.ext.coreConfig.versionName
+        setProperty("archivesBaseName", "$apkName")
     }
 
     buildTypes {
