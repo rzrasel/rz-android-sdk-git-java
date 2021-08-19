@@ -151,7 +151,8 @@ public class ProExternalStorage {
             baseDir = "/data/data/" + argContext.getApplicationContext().getPackageName() + "/" + baseDir;
         }
         if(!isDirWriteable(baseDir)) {
-            baseDir = getWriteableDirectory(argContext, ProExternalStorage.DirectoryType.NULL, argDirName);
+            //baseDir = getWriteableDirectory(argContext, ProExternalStorage.DirectoryType.NULL, argDirName);
+            baseDir = argContext.getFilesDir().getPath() + "/" + baseDir;
         }
         File file = new File(baseDir);
         if (argIsMkDirs) {
