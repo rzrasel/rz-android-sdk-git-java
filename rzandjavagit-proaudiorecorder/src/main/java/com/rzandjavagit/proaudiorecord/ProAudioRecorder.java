@@ -1,4 +1,4 @@
-package com.sm.banglaalphabet.proaudiorecorder;
+package com.rzandjavagit.proaudiorecord;
 
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
