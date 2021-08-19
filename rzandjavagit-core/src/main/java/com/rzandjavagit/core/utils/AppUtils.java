@@ -1,6 +1,7 @@
 package com.rzandjavagit.core.utils;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
@@ -32,6 +33,16 @@ public class AppUtils {
         } catch (PackageManager.NameNotFoundException e) {
             return "";
         }
+    }
+
+    public static String getAppName(Context argContext) {
+        PackageManager packageManager = argContext.getApplicationContext().getPackageManager();
+        ApplicationInfo applicationInfo = null;
+        try {
+            applicationInfo = packageManager.getApplicationInfo(argContext.getApplicationContext().getApplicationInfo().packageName, 0);
+        } catch (final PackageManager.NameNotFoundException e) {
+        }
+        return (String) (applicationInfo != null ? packageManager.getApplicationLabel(applicationInfo) : "Unknown");
     }
 
     public static void logDebug(String argTag, String argMessage) {
