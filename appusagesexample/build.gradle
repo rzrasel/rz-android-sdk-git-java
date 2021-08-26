@@ -8,12 +8,23 @@ android {
     compileSdk project.ext.coreConfig.compileSdk
     buildToolsVersion project.ext.coreConfig.buildToolsVersion
 
+    def versionPropsFile = file("${rootDir}/config.properties")
+    def value = 0
+    Properties versionProps = new Properties()
+    if (!versionPropsFile.exists()) {
+        versionProps['VERSION_PATCH'] = "0"
+        versionProps['VERSION_NUMBER'] = "0"
+        versionProps['VERSION_BUILD'] = "-1" // I set it to minus one so the first build is 0 which isn't super important.
+        versionProps.store(versionPropsFile.newWriter(), null)
+    }
+
     defaultConfig {
         applicationId "com.rzandroidgit.appusagesexample"
         /*minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0.0.1"*/
+        //def verName = configProps["versionName"].toString()
         minSdk project.ext.coreConfig.minSdk
         targetSdk project.ext.coreConfig.targetSdk
         versionCode project.ext.coreConfig.versionCode

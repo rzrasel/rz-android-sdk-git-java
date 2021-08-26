@@ -18,6 +18,13 @@ allprojects {
         //maven { url "https://jitpack.io" }
     }
     project.apply from: "${rootDir}/constants.gradle"
+    def configPropsFile = file("${rootDir}/config.properties")
+    if (configPropsFile.canRead()) {
+        def Properties configProps = new Properties()
+        configProps.load(new FileInputStream(configPropsFile))
+    } else {
+        throw new GradleException("Could not read config.properties!")
+    }
 }
 task clean(type: Delete) {
     delete rootProject.buildDir
