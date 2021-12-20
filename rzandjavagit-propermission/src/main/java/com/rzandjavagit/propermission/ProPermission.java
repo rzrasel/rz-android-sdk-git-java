@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
 import java.util.ArrayList;
@@ -77,6 +78,30 @@ public class ProPermission {
         return true;
     }
 
+    public boolean hasRationalePermission(String... argPermissions) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            onLogPrint("Less than marshmello");
+            return false;
+        }
+        List<String> rationalePermissions = new ArrayList<>();
+        List<String> restPermissions = new ArrayList<>();
+        for (String permission : argPermissions) {
+            //boolean isRationale = activity.shouldShowRequestPermissionRationale(permission);
+            boolean isRationale = ActivityCompat.shouldShowRequestPermissionRationale(activity, permission);
+            if (isRationale) {
+                rationalePermissions.add(permission);
+            } else {
+                restPermissions.add(permission);
+            }
+        }
+        System.out.println("DEBUG_LOG_PRINT>hasRationalePermission>ALL: " + restPermissions.toString());
+        System.out.println("DEBUG_LOG_PRINT>hasRationalePermission: " + rationalePermissions.toString());
+        if (rationalePermissions.size() > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public int getRequestCode() {
         return requestCode;
     }
@@ -91,7 +116,7 @@ public class ProPermission {
             return this;
         }
 
-        public Builder listener(OnPermissionListener argListener) {
+        public Builder setListener(OnPermissionListener argListener) {
             this.listener = argListener;
             return this;
         }
@@ -122,3 +147,22 @@ public class ProPermission {
         }
     }
 }
+/*
+ProPermission proPermission;
+proPermission = new ProPermission.Builder()
+.with(activity)
+.isDebug(true)
+.listener(new OnPermissionListener() {
+    @Override
+    public void onAllPermissionsGranted(List<String> argPermissions) {
+    }
+
+    @Override
+    public void onPermissionsGranted(List<String> argPermissions) {
+    }
+
+    @Override
+    public void onPermissionsDenied(List<String> argPermissions) {
+    }
+}).build();
+*/

@@ -2,22 +2,23 @@ project.ext {
     // Version
     supportVersion = "30.0.3"
     coreConfig = [
-            compileSdk          : 30,
+            compileSdk          : 31,
             minSdk              : 16,
-            targetSdk           : 30,
-            buildToolsVersion   : "30.0.3",
-            gradleVersion       : "7.0.0",
+            targetSdk           : 31,
+            buildToolsVersion   : "31.0.0",
+            gradleVersion       : "7.0.4",
             APP_NAME            : "Rz Android Java Git SDK",
-            versionCode         : 103,
-            versionName         : "1.0.3",
+            versionCode         : 104,
+            versionName         : "1.0.31",
     ]
     // Support Libraries dependencies
     supportDependencies = [
-            design           : "com.android.support:design:${supportVersion}",
-            recyclerView     : "com.android.support:recyclerview-v7:${supportVersion}",
-            cardView         : "com.android.support:cardview-v7:${supportVersion}",
-            appCompat        : "com.android.support:appcompat-v7:${supportVersion}",
-            supportAnnotation: "com.android.support:support-annotations:${supportVersion}",
+            design              : "com.android.support:design:${supportVersion}",
+            recyclerView        : "com.android.support:recyclerview-v7:${supportVersion}",
+            cardView            : "com.android.support:cardview-v7:${supportVersion}",
+            appCompat           : "com.android.support:appcompat-v7:${supportVersion}",
+            supportAnnotation   : "com.android.support:support-annotations:${supportVersion}",
+            cardViewx           : "androidx.cardview:cardview:1.0.0"
     ]
     /*compileSdk = 30
     minSdk = 16
