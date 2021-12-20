@@ -20,6 +20,7 @@ Git workflow
 ```GIT_WORKFLOW
 1) Git branch "master"
     -
+    - ProInternet class created → Monday December 20, 2021, 17:03:01
     - ProInternet module created ⇨ Monday December 20, 2021, 16:59:51
     - Update gradel file and readme.md file ⇒ Monday December 20, 2021, 16:31:15
 ```
