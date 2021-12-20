@@ -16,7 +16,7 @@ git status
 git status
 
 git push --delete origin tagname
-git push --delete origin rzandroid-sdk-v-1.0.1
+git push --delete origin 1.0.1
 ```
 
 Git workflow
