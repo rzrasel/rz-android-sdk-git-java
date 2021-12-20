@@ -14,6 +14,9 @@ git push --all
 git remote show origin
 git status
 git status
+
+git push --delete origin tagname
+git push --delete origin rzandroid-sdk-v-1.0.1
 ```
 
 Git workflow
