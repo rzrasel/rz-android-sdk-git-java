@@ -15,4 +15,3 @@ git remote show origin
 git status
 git status
 ```
-
