@@ -1,6 +1,9 @@
 plugins {
     id "com.android.library"
 }
+//apply plugin: "com.github.dcendents.android-maven"
+
+group = "com.rzrasel.rzandjavagitlib"
 project.ext.name = "Rz-Android-Java-Core-Git-SDK"
 project.ext.artifactId = "rzandjavagit-core"
 project.ext.description = "Rz Android Java Core Git SDK"
