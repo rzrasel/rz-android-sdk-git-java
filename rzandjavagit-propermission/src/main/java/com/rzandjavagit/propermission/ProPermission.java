@@ -94,8 +94,8 @@ public class ProPermission {
                 restPermissions.add(permission);
             }
         }
-        System.out.println("DEBUG_LOG_PRINT>hasRationalePermission>ALL: " + restPermissions.toString());
-        System.out.println("DEBUG_LOG_PRINT>hasRationalePermission: " + rationalePermissions.toString());
+        onLogPrint("DEBUG_LOG_PRINT>hasRationalePermission>ALL: " + restPermissions.toString());
+        onLogPrint("DEBUG_LOG_PRINT>hasRationalePermission: " + rationalePermissions.toString());
         if (rationalePermissions.size() > 0) {
             return true;
         }

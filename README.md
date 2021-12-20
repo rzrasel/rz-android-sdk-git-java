@@ -15,3 +15,14 @@ git remote show origin
 git status
 git status
 ```
+
+Git workflow
+```GIT_WORKFLOW
+1) Git branch "master"
+    -
+    - Update gradel file and readme.md file ⇒ Monday December 20, 2021, 16:31:15
+```
+
+```PHP_DATE_TIME
+echo date("D", (time() + 6 * 60 * 60)) . "day " . date("F j, Y, G:i:s", (time() + 6 * 60 * 60));
+```
