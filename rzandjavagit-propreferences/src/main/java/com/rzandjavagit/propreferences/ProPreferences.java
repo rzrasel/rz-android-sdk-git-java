@@ -9,6 +9,7 @@ import android.os.Build;
 import android.text.TextUtils;
 
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class ProPreferences {
@@ -202,6 +203,11 @@ public class ProPreferences {
         editor.apply();
     }
 
+    public static void remove() {
+        SharedPreferences prefs = getPreferences();
+        prefs.edit().clear().commit();
+    }
+
     public static boolean contains(String argKey) {
         return getPreferences().contains(argKey);
     }
@@ -214,6 +220,21 @@ public class ProPreferences {
 
     public static SharedPreferences.Editor edit() {
         return getPreferences().edit();
+    }
+
+    public static void logPrint() {
+        SharedPreferences prefs = getPreferences();
+        Map<String, ?> allEntries = prefs.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            //Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
+            System.out.println(
+                    ""
+                            + "DEBUG_LOG_PRINT_SHARED_PREFERENCE:"
+                            + " Key: " + entry.getKey()
+                            + " Value: " + entry.getValue()
+                            + ""
+            );
+        }
     }
 
     public static class Builder {
