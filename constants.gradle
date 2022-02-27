@@ -8,8 +8,8 @@ project.ext {
             buildToolsVersion   : "31.0.0",
             gradleVersion       : "7.0.4",
             APP_NAME            : "Rz Android Java Git SDK",
-            versionCode         : 105,
-            versionName         : "1.0.32",
+            versionCode         : 106,
+            versionName         : "1.0.321",
     ]
     // Support Libraries dependencies
     supportDependencies = [
