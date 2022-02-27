@@ -11,8 +11,8 @@ git add .
 git commit -m "Add Readme & Git Commit File"
 git pull
 git push --all
-git remote show origin
 git status
+git remote show origin
 git status
 
 git push --delete origin tagname
