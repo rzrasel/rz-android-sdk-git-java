@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class ProPreferences {
     private Context context;
-    private static SharedPreferences sharedPrefs;
+    private SharedPreferences sharedPrefs;
     private String prefsKey;
     private int prefsMode;
     private static final String DEFAULT_SUFFIX = "_preferences";
@@ -27,11 +27,11 @@ public class ProPreferences {
         initPrefs(context, prefsKey, prefsMode);
     }
 
-    private static void initPrefs(Context argContext, String argPrefsName, int argPrefsMode) {
+    private void initPrefs(Context argContext, String argPrefsName, int argPrefsMode) {
         sharedPrefs = argContext.getSharedPreferences(argPrefsName, argPrefsMode);
     }
 
-    public static SharedPreferences getPreferences() {
+    private SharedPreferences getPreferences() {
         if (sharedPrefs != null) {
             return sharedPrefs;
         }
@@ -40,87 +40,87 @@ public class ProPreferences {
                         + " class not correctly instantiated. Please call Builder.setContext().build() in the Application class onCreate.");
     }
 
-    public static int getInt(String argKey, int argDefValue) {
+    public int getInt(String argKey, int argDefValue) {
         return getPreferences().getInt(argKey, argDefValue);
     }
 
-    public static int getInt(String argKey) {
+    public int getInt(String argKey) {
         return getPreferences().getInt(argKey, 0);
     }
 
-    public static void putInt(String argKey, int argValue) {
+    public void putInt(String argKey, int argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putInt(argKey, argValue);
         editor.apply();
     }
 
-    public static boolean getBoolean(String argKey, boolean argDefValue) {
+    public boolean getBoolean(String argKey, boolean argDefValue) {
         return getPreferences().getBoolean(argKey, argDefValue);
     }
 
-    public static boolean getBoolean(String argKey) {
+    public boolean getBoolean(String argKey) {
         return getPreferences().getBoolean(argKey, false);
     }
 
-    public static void putBoolean(String argKey, boolean argValue) {
+    public void putBoolean(String argKey, boolean argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putBoolean(argKey, argValue);
         editor.apply();
     }
 
-    public static long getLong(String argKey, long argDefValue) {
+    public long getLong(String argKey, long argDefValue) {
         return getPreferences().getLong(argKey, argDefValue);
     }
 
-    public static long getLong(String argKey) {
+    public long getLong(String argKey) {
         return getPreferences().getLong(argKey, 0L);
     }
 
-    public static void putLong(String argKey, long argValue) {
+    public void putLong(String argKey, long argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putLong(argKey, argValue);
         editor.apply();
     }
 
-    public static double getDouble(String argKey, double argDefValue) {
+    public double getDouble(String argKey, double argDefValue) {
         return Double.longBitsToDouble(getPreferences().getLong(argKey, Double.doubleToLongBits(argDefValue)));
     }
 
-    public static double getDouble(String argKey) {
+    public double getDouble(String argKey) {
         return Double.longBitsToDouble(getPreferences().getLong(argKey, Double.doubleToLongBits(0.0d)));
     }
 
-    public static void putDouble(String argKey, double argValue) {
+    public void putDouble(String argKey, double argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putLong(argKey, Double.doubleToRawLongBits(argValue));
         editor.apply();
     }
 
-    public static float getFloat(String argKey, float argDefValue) {
+    public float getFloat(String argKey, float argDefValue) {
         return getPreferences().getFloat(argKey, argDefValue);
     }
 
-    public static float getFloat(String argKey) {
+    public float getFloat(String argKey) {
         return getPreferences().getFloat(argKey, 0.0f);
     }
 
-    public static void putFloat(String argKey, float argValue) {
+    public void putFloat(String argKey, float argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putFloat(argKey, argValue);
         editor.apply();
     }
 
-    public static String getString(String argKey, String argDefValue) {
+    public String getString(String argKey, String argDefValue) {
         return getPreferences().getString(argKey, argDefValue);
     }
 
-    public static String getString(String argKey) {
+    public String getString(String argKey) {
         return getPreferences().getString(argKey, null);
     }
 
     @SuppressWarnings("WeakerAccess")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static Set<String> getStringSet(String argKey, Set<String> argDefValue) {
+    public Set<String> getStringSet(String argKey, Set<String> argDefValue) {
         SharedPreferences prefs = getPreferences();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return prefs.getStringSet(argKey, argDefValue);
@@ -130,7 +130,7 @@ public class ProPreferences {
         }
     }
 
-    public static void putString(String argKey, String argValue) {
+    public void putString(String argKey, String argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         editor.putString(argKey, argValue);
         editor.apply();
@@ -138,7 +138,7 @@ public class ProPreferences {
 
     @SuppressWarnings("WeakerAccess")
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static void putStringSet(String argKey, Set<String> argValue) {
+    public void putStringSet(String argKey, Set<String> argValue) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             SharedPreferences.Editor editor = getPreferences().edit();
             editor.putStringSet(argKey, argValue);
@@ -150,7 +150,7 @@ public class ProPreferences {
     }
 
     @SuppressWarnings("WeakerAccess")
-    public static Set<String> getOrderedStringSet(String argKey, final Set<String> argDefValue) {
+    public Set<String> getOrderedStringSet(String argKey, final Set<String> argDefValue) {
         SharedPreferences prefs = getPreferences();
         if (prefs.contains(argKey + LENGTH)) {
             LinkedHashSet<String> set = new LinkedHashSet<>();
@@ -166,7 +166,7 @@ public class ProPreferences {
     }
 
     @SuppressWarnings("WeakerAccess")
-    public static void putOrderedStringSet(String argKey, Set<String> argValue) {
+    public void putOrderedStringSet(String argKey, Set<String> argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         int stringSetLength = 0;
         if (sharedPrefs.contains(argKey + LENGTH)) {
@@ -186,7 +186,7 @@ public class ProPreferences {
         editor.apply();
     }
 
-    public static void remove(String argKey) {
+    public void remove(String argKey) {
         SharedPreferences prefs = getPreferences();
         SharedPreferences.Editor editor = prefs.edit();
         if (prefs.contains(argKey + LENGTH)) {
@@ -203,26 +203,26 @@ public class ProPreferences {
         editor.apply();
     }
 
-    public static void remove() {
+    public void remove() {
         SharedPreferences prefs = getPreferences();
         prefs.edit().clear().commit();
     }
 
-    public static boolean contains(String argKey) {
+    public boolean contains(String argKey) {
         return getPreferences().contains(argKey);
     }
 
-    public static SharedPreferences.Editor clear() {
+    public SharedPreferences.Editor clear() {
         SharedPreferences.Editor editor = getPreferences().edit().clear();
         editor.apply();
         return editor;
     }
 
-    public static SharedPreferences.Editor edit() {
+    public SharedPreferences.Editor edit() {
         return getPreferences().edit();
     }
 
-    public static void logPrint() {
+    public void logPrint() {
         SharedPreferences prefs = getPreferences();
         Map<String, ?> allEntries = prefs.getAll();
         for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
