@@ -32,9 +32,6 @@ android {
         def apkName = "$project.name" + "-v-" + project.ext.coreConfig.versionName
         setProperty("archivesBaseName", "$apkName")
     }
-    lintOptions {
-        abortOnError false
-    }
     /*buildTypes {
         release {
             minifyEnabled false
@@ -44,6 +41,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
+        abortOnError false
     }
 }
 
