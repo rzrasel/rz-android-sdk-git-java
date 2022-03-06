@@ -1,7 +1,5 @@
 package com.rzandjavagit.proadmob;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
@@ -133,8 +131,8 @@ class ProPreferences {
         return getPreferences().getString(argKey, null);
     }
 
-    @SuppressWarnings("WeakerAccess")
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    //@SuppressWarnings("WeakerAccess")
+    //@TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public Set<String> getStringSet(String argKey, Set<String> argDefValue) {
         SharedPreferences prefs = getPreferences();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -155,8 +153,8 @@ class ProPreferences {
         }
     }
 
-    @SuppressWarnings("WeakerAccess")
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    //@SuppressWarnings("WeakerAccess")
+    //@TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void putStringSet(String argKey, Set<String> argValue) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             SharedPreferences.Editor editor = getPreferences().edit();
@@ -168,7 +166,7 @@ class ProPreferences {
         }
     }
 
-    @SuppressWarnings("WeakerAccess")
+    //@SuppressWarnings("WeakerAccess")
     public Set<String> getOrderedStringSet(String argKey, final Set<String> argDefValue) {
         SharedPreferences prefs = getPreferences();
         if (prefs.contains(argKey + LENGTH)) {
@@ -184,7 +182,7 @@ class ProPreferences {
         return argDefValue;
     }
 
-    @SuppressWarnings("WeakerAccess")
+    //@SuppressWarnings("WeakerAccess")
     public void putOrderedStringSet(String argKey, Set<String> argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         int stringSetLength = 0;

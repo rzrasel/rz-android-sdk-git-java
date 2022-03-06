@@ -1,7 +1,5 @@
 package com.rzandjavagit.propreferences;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
@@ -32,12 +30,13 @@ public class ProPreferences {
     }
 
     private SharedPreferences getPreferences() {
-        if (sharedPrefs != null) {
+        /*if (sharedPrefs != null) {
             return sharedPrefs;
-        }
-        throw new RuntimeException(
+        }*/
+        /*throw new RuntimeException(
                 ProPreferences.class.getSimpleName()
-                        + " class not correctly instantiated. Please call Builder.setContext().build() in the Application class onCreate.");
+                        + " class not correctly instantiated. Please call Builder.setContext().build() in the Application class onCreate.");*/
+        return sharedPrefs;
     }
 
     public int getInt(String argKey, int argDefValue) {
@@ -118,8 +117,8 @@ public class ProPreferences {
         return getPreferences().getString(argKey, null);
     }
 
-    @SuppressWarnings("WeakerAccess")
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    /*@SuppressWarnings("WeakerAccess")
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)*/
     public Set<String> getStringSet(String argKey, Set<String> argDefValue) {
         SharedPreferences prefs = getPreferences();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
@@ -136,8 +135,8 @@ public class ProPreferences {
         editor.apply();
     }
 
-    @SuppressWarnings("WeakerAccess")
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    /*@SuppressWarnings("WeakerAccess")
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)*/
     public void putStringSet(String argKey, Set<String> argValue) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             SharedPreferences.Editor editor = getPreferences().edit();
@@ -149,7 +148,7 @@ public class ProPreferences {
         }
     }
 
-    @SuppressWarnings("WeakerAccess")
+    //@SuppressWarnings("WeakerAccess")
     public Set<String> getOrderedStringSet(String argKey, final Set<String> argDefValue) {
         SharedPreferences prefs = getPreferences();
         if (prefs.contains(argKey + LENGTH)) {
@@ -165,7 +164,7 @@ public class ProPreferences {
         return argDefValue;
     }
 
-    @SuppressWarnings("WeakerAccess")
+    //@SuppressWarnings("WeakerAccess")
     public void putOrderedStringSet(String argKey, Set<String> argValue) {
         SharedPreferences.Editor editor = getPreferences().edit();
         int stringSetLength = 0;
@@ -253,7 +252,7 @@ public class ProPreferences {
             return this;
         }
 
-        @SuppressLint({"WorldReadableFiles", "WorldWriteableFiles"})
+        //@SuppressLint({"WorldReadableFiles", "WorldWriteableFiles"})
         public Builder withMode(Mode argMode) {
             if (argMode.label == ContextWrapper.MODE_PRIVATE || argMode.label == ContextWrapper.MODE_WORLD_READABLE || argMode.label == ContextWrapper.MODE_WORLD_WRITEABLE || argMode.label == ContextWrapper.MODE_MULTI_PROCESS) {
                 prefsMode = argMode.label;
@@ -263,7 +262,7 @@ public class ProPreferences {
             return this;
         }
 
-        @SuppressWarnings("SameParameterValue")
+        //@SuppressWarnings("SameParameterValue")
         public Builder withDefaultPrefs(boolean argDefaultPrefs) {
             prefsUseDefault = argDefaultPrefs;
             return this;
@@ -293,9 +292,9 @@ public class ProPreferences {
 
     public enum Mode {
         PRIVATE(ContextWrapper.MODE_PRIVATE),
-        @SuppressLint("WorldReadableFiles")
+        //@SuppressLint("WorldReadableFiles")
         WORLD_READABLE(ContextWrapper.MODE_WORLD_READABLE),
-        @SuppressLint("WorldWriteableFiles")
+        //@SuppressLint("WorldWriteableFiles")
         WORLD_WRITEABLE(ContextWrapper.MODE_WORLD_WRITEABLE),
         MULTI_PROCESS(ContextWrapper.MODE_MULTI_PROCESS),
         DEFAULT(ContextWrapper.MODE_PRIVATE);
