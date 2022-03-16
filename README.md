@@ -1,10 +1,10 @@
-# rzandroid-java-sdk
-Rz Android Java Git SDK
+# rz-android-sdk-git-java
+Rz Android SDK Git Java
 
 ### GIT Command
 ```git_command
 git init
-git remote add origin https://github.com/rzrasel/rzandroid-java-sdk.git
+git remote add origin https://github.com/rzrasel/rz-android-sdk-git-java.git
 git remote -v
 git fetch && git checkout master
 git add .
