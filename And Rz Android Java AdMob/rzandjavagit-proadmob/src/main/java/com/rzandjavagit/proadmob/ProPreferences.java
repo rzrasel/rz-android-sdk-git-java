@@ -340,7 +340,7 @@ class ProPreferences {
         DEFAULT(ContextWrapper.MODE_PRIVATE);
         public int label;
 
-        private Mode(int label) {
+        Mode(int label) {
             this.label = label;
         }
 
