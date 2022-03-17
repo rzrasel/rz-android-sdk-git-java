@@ -6,9 +6,11 @@ import android.content.Context;
 public class ProAdMobManager {
     private Activity activity;
     private Context context;
+    private ProConfigData proConfigData;
     private OnAdEventListener adEventListener;
     private ProPreferences proPreferences;
     private ProAdMobHelper proAdMobHelper;
+    private ProPrefAdMobDataManager proPrefAdMobDataManager;
     private final int timeSecondMax = 70;
     private final int timeSecondMin = 30;
     private final double timeOverFactorMax = 3.3;
@@ -20,11 +22,66 @@ public class ProAdMobManager {
     public ProAdMobManager(Builder builder) {
         this.activity = builder.activity;
         this.context = builder.context;
+        this.proConfigData = builder.proConfigData;
+        this.adEventListener = builder.eventListener;
         this.isDebug = builder.isDebug;
-        adEventListener = builder.eventListener;
+        //
+        new OnSetupInitialization().onSetupPrefAdMobDataManager();
+        //
         proAdMobHelper = new ProAdMobHelper(activity, context)
                 .setEventListener(new SetAdEventListener())
                 .setIsDebug(isDebug);
+    }
+
+    private class OnSetupInitialization {
+        OnSetupInitialization onSetupPrefAdMobDataManager() {
+            if (proConfigData == null) {
+                proConfigData = new ProConfigData(
+                        140,
+                        70,
+                        22,
+                        12,
+                        4.0,
+                        2.0,
+                        2.6,
+                        2.2,
+                        true,
+                        false
+                );
+            }
+            proPrefAdMobDataManager = new ProPrefAdMobDataManager.Builder()
+                    .build(activity, context, proConfigData);
+            return this;
+        }
+    }
+
+    public static class Builder {
+        private Activity activity;
+        private Context context;
+        private ProConfigData proConfigData;
+        private OnAdEventListener eventListener;
+        private boolean isDebug = false;
+
+        public Builder setEventListener(OnAdEventListener adEventListener) {
+            this.eventListener = adEventListener;
+            return this;
+        }
+
+        public Builder setConfigData(ProConfigData proConfigData) {
+            this.proConfigData = proConfigData;
+            return this;
+        }
+
+        public Builder setIsDebug(boolean isDebug) {
+            this.isDebug = isDebug;
+            return this;
+        }
+
+        public ProAdMobManager build(Activity activity, Context context) {
+            this.activity = activity;
+            this.context = context;
+            return new ProAdMobManager(this);
+        }
     }
 
     class SetAdEventListener implements ProAdMobHelper.OnAdEventListener {
@@ -46,29 +103,6 @@ public class ProAdMobManager {
 
         public void onAdFailedToShowFullScreenContent(String adError) {
             adEventListener.onAdFailedToShowFullScreenContent(adError);
-        }
-    }
-
-    class Builder {
-        private Activity activity;
-        private Context context;
-        private OnAdEventListener eventListener;
-        private boolean isDebug = false;
-
-        public Builder setEventListener(OnAdEventListener adEventListener) {
-            this.eventListener = adEventListener;
-            return this;
-        }
-
-        public Builder setIsDebug(boolean isDebug) {
-            this.isDebug = isDebug;
-            return this;
-        }
-
-        public ProAdMobManager build(Activity activity, Context context) {
-            this.activity = activity;
-            this.context = context;
-            return new ProAdMobManager(this);
         }
     }
 

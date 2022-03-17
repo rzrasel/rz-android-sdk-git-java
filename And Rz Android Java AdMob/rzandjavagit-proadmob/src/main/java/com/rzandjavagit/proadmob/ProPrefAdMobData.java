@@ -26,13 +26,13 @@ class ProPrefAdMobData {
     @SerializedName("admob_total_event_counter")
     public int totalEventCount;
     @SerializedName("admob_rand_time_factor_offset")
-    public float randTimeFactorOffset;
+    public double randTimeFactorOffset;
     @SerializedName("admob_total_time_factor_offset")
     public int totalTimeFactorOffset;
     @SerializedName("admob_total_time_factor_seconds")
     public long totalTimeFactorSeconds;
     @SerializedName("admob_rand_event_offset")
-    public float randEventOffset;
+    public double randEventOffset;
     @SerializedName("admob_total_event_offset")
     public int totalEventOffset;
     @SerializedName("admob_is_randomize_ad_id")
@@ -50,10 +50,10 @@ class ProPrefAdMobData {
             int totalButtonClickEvent,
             int totalViewResumeEvent,
             int totalEventCount,
-            float randTimeFactorOffset,
+            double randTimeFactorOffset,
             int totalTimeFactorOffset,
             long totalTimeFactorSeconds,
-            float randEventOffset,
+            double randEventOffset,
             int totalEventOffset,
             boolean isRandomizeAdId
     ) {

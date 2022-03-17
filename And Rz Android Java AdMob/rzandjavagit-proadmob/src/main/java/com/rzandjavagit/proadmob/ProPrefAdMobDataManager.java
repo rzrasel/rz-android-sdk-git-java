@@ -17,6 +17,21 @@ class ProPrefAdMobDataManager {
         this.activity = builder.activity;
         this.context = builder.context;
         this.proConfigData = builder.proConfigData;
+        onSetupProPreferences();
+        //
+        String jsonString =
+                proPreferences.getString(PrefKey.ADMOB_JSON_MODEL_CLASS_DATA.label, null);
+        if (jsonString == null) {
+            proPrefAdMobData = onSetupPrefData();
+            onSavePreference();
+        } else {
+            proPrefAdMobData = fromJson(jsonString);
+        }
+        //
+        //onLogPrint(proPrefAdMobData);
+        //proPreferences.clear();
+        //onProPrefInitialize(false);
+        proPreferences.debugPrint();
     }
 
     private void onSetupProPreferences() {
@@ -43,11 +58,13 @@ class ProPrefAdMobDataManager {
         int totalViewResumeEvent = 0;
         int totalEventCounter = 0;
         //
-        float randTimeFactorOffset = AdMobUtils.getDecimalFormat(AdMobUtils.getRandomFloat(proConfigData.minTimeOffset, proConfigData.maxTimeOffset));
+        double randTimeFactorOffset = AdMobUtils.getDecimalFormat(AdMobUtils.getRandomDouble(proConfigData.minTimeOffset, proConfigData.maxTimeOffset));
         int totalTimeFactorOffset = (int) AdMobUtils.getDecimalFormat(nextRandSeconds * randTimeFactorOffset);
         long totalTimeFactorSeconds = lastTimeSeconds + totalTimeFactorOffset;
-        float randEventOffset = AdMobUtils.getDecimalFormat(AdMobUtils.getRandomFloat(proConfigData.minEventOffset, proConfigData.maxEventOffset));
-        int totalEventOffset = (int) AdMobUtils.getDecimalFormat((totalEventForNext / randEventOffset) * randEventOffset);
+        double randEventOffset = AdMobUtils.getDecimalFormat(AdMobUtils.getRandomDouble(proConfigData.minEventOffset, proConfigData.maxEventOffset));
+        int totalEventOffset = (int) AdMobUtils.getDecimalFormat(totalEventForNext / (int) Math.ceil(randEventOffset));
+        //int totalEventOffset = (int) AdMobUtils.getDecimalFormat(totalEventForNext / randEventOffset);
+        totalEventOffset = totalEventOffset * (int) Math.floor(randEventOffset);
         boolean isRandomizeAdId = proConfigData.isRandomizeAdId;
         //
         return new ProPrefAdMobData(
@@ -106,6 +123,21 @@ class ProPrefAdMobDataManager {
             this.proConfigData = proConfigData;
             return new ProPrefAdMobDataManager(this);
         }
+    }
+
+    public void onRestartPreference() {
+        proPrefAdMobData = onSetupPrefData();
+        onSavePreference();
+    }
+
+    private void setRemainTimeSeconds() {
+        proPrefAdMobData.nextRemainTimeSeconds = proPrefAdMobData.nextTimeSeconds - getCurrentSeconds();
+    }
+
+    private void onSavePreference() {
+        setRemainTimeSeconds();
+        String jsonString = getJson(proPrefAdMobData);
+        proPreferences.putString(PrefKey.ADMOB_JSON_MODEL_CLASS_DATA.label, jsonString);
     }
 
     public void onLogPrint() {

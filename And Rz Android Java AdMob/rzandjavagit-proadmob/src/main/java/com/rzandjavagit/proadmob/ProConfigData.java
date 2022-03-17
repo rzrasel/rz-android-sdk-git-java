@@ -12,13 +12,13 @@ public class ProConfigData {
     @SerializedName("min_ui_event_for_next_ad")
     public int minEvent;
     @SerializedName("max_time_offset_for_next_ad")
-    public float maxTimeOffset;
+    public double maxTimeOffset;
     @SerializedName("min_time_offset_for_next_ad")
-    public float minTimeOffset;
+    public double minTimeOffset;
     @SerializedName("max_ui_event_offset_for_next_ad")
-    public float maxEventOffset;
+    public double maxEventOffset;
     @SerializedName("min_ui_event_offset_for_next_ad")
-    public float minEventOffset;
+    public double minEventOffset;
     @SerializedName("is_randomize_ad_id")
     public boolean isRandomizeAdId;
     @SerializedName("is_debug_mode")
@@ -29,10 +29,10 @@ public class ProConfigData {
             int minTimeInSecond,
             int maxEvent,
             int minEvent,
-            float maxTimeOffset,
-            float minTimeOffset,
-            float maxEventOffset,
-            float minEventOffset,
+            double maxTimeOffset,
+            double minTimeOffset,
+            double maxEventOffset,
+            double minEventOffset,
             boolean isRandomizeAdId,
             boolean isDebug
     ) {
@@ -40,6 +40,8 @@ public class ProConfigData {
         this.minTimeInSecond = minTimeInSecond;
         this.maxEvent = maxEvent;
         this.minEvent = minEvent;
+        this.maxTimeOffset = maxTimeOffset;
+        this.minTimeOffset = minTimeOffset;
         this.maxEventOffset = maxEventOffset;
         this.minEventOffset = minEventOffset;
         this.isRandomizeAdId = isRandomizeAdId;
