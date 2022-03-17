@@ -3,6 +3,8 @@ package com.rzandjavagit.proadmob;
 import android.app.Activity;
 import android.content.Context;
 
+import com.google.android.gms.ads.AdRequest;
+
 public class ProAdMobManager {
     private Activity activity;
     private Context context;
@@ -26,33 +28,58 @@ public class ProAdMobManager {
         this.adEventListener = builder.eventListener;
         this.isDebug = builder.isDebug;
         //
-        new OnSetupInitialization().onSetupPrefAdMobDataManager();
-        //
-        proAdMobHelper = new ProAdMobHelper(activity, context)
-                .setEventListener(new SetAdEventListener())
-                .setIsDebug(isDebug);
+        new OnSetupInitialization()
+                .onSetupPrefAdMobDataManager()
+                .onSetupAdMobHelper();
     }
 
-    private class OnSetupInitialization {
-        OnSetupInitialization onSetupPrefAdMobDataManager() {
-            if (proConfigData == null) {
-                proConfigData = new ProConfigData(
-                        140,
-                        70,
-                        22,
-                        12,
-                        4.0,
-                        2.0,
-                        2.6,
-                        2.2,
-                        true,
-                        false
-                );
-            }
-            proPrefAdMobDataManager = new ProPrefAdMobDataManager.Builder()
-                    .build(activity, context, proConfigData);
-            return this;
+    public boolean canShowAdView(boolean isForced) {
+        ProPrefAdMobDataManager.AdViewDataManager adViewDataManager = proPrefAdMobDataManager.new AdViewDataManager();
+        return adViewDataManager.canShowAdView(isForced);
+    }
+
+    public void onButtonClick() {
+        ProPrefAdMobDataManager.AdViewDataManager adViewDataManager = proPrefAdMobDataManager.new AdViewDataManager();
+        adViewDataManager.onButtonClick();
+    }
+
+    public void onResume() {
+        ProPrefAdMobDataManager.AdViewDataManager adViewDataManager = proPrefAdMobDataManager.new AdViewDataManager();
+        adViewDataManager.onResume();
+    }
+
+    public void onClear() {
+        //proPreferences.clear()
+    }
+
+    public void onDebugPrint() {
+        //proPreferences.debugPrint()
+        proPrefAdMobDataManager.onLogPreferences();
+    }
+
+    public AdRequest getAdRequest() {
+        return proAdMobHelper.getAdRequest();
+    }
+
+    public void onLoadAd(String admobAdUnitId) {
+        if (isDebug) {
+            return;
         }
+        proAdMobHelper.onLoadAd(admobAdUnitId);
+    }
+
+    public void onPrepareAd(AdRequest adRequest, String admobAdUnitId) {
+        if (isDebug) {
+            return;
+        }
+        proAdMobHelper.onPrepareAd(adRequest, admobAdUnitId);
+    }
+
+    public void showAd() {
+        proAdMobHelper.show();
+        //onProPrefInitialize(true)
+        //onSavePreference()
+        proPrefAdMobDataManager.onRestartPreference();
     }
 
     public static class Builder {
@@ -84,7 +111,36 @@ public class ProAdMobManager {
         }
     }
 
-    class SetAdEventListener implements ProAdMobHelper.OnAdEventListener {
+    private class OnSetupInitialization {
+        private OnSetupInitialization onSetupPrefAdMobDataManager() {
+            if (proConfigData == null) {
+                proConfigData = new ProConfigData(
+                        140,
+                        70,
+                        22,
+                        12,
+                        4.0,
+                        2.0,
+                        2.6,
+                        2.2,
+                        true,
+                        false
+                );
+            }
+            proPrefAdMobDataManager = new ProPrefAdMobDataManager.Builder()
+                    .build(activity, context, proConfigData);
+            return this;
+        }
+
+        private OnSetupInitialization onSetupAdMobHelper() {
+            proAdMobHelper = new ProAdMobHelper(activity, context)
+                    .setEventListener(new SetAdEventListener())
+                    .setIsDebug(isDebug);
+            return this;
+        }
+    }
+
+    private class SetAdEventListener implements ProAdMobHelper.OnAdEventListener {
         public void onAdLoaded() {
             adEventListener.onAdLoaded();
         }
