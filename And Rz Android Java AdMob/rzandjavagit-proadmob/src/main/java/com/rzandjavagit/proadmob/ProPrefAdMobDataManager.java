@@ -31,7 +31,7 @@ class ProPrefAdMobDataManager {
         //onLogPrint(proPrefAdMobData);
         //proPreferences.clear();
         //onProPrefInitialize(false);
-        proPreferences.debugPrint();
+        //proPreferences.debugPrint();
     }
 
     private void onSetupProPreferences() {
@@ -122,6 +122,73 @@ class ProPrefAdMobDataManager {
             this.context = context;
             this.proConfigData = proConfigData;
             return new ProPrefAdMobDataManager(this);
+        }
+    }
+
+    public class AdViewDataManager {
+        private long nextTimeDiffInMillis(ProPrefAdMobData proPrefAdMobData) {
+            return proPrefAdMobData.nextTimeMillis - System.currentTimeMillis();
+        }
+
+        private long nextTimeDiffInSeconds(ProPrefAdMobData proPrefAdMobData) {
+            return proPrefAdMobData.nextTimeSeconds - getCurrentSeconds();
+        }
+
+        private boolean canShowByForced(ProPrefAdMobData proPrefAdMobData) {
+            int eventRemain = proPrefAdMobData.totalEventForNextViewing - proPrefAdMobData.totalEventCount;
+            if (nextTimeDiffInSeconds(proPrefAdMobData) < 0 || eventRemain < 0) {
+                return true;
+            }
+            return false;
+        }
+
+
+        private boolean canPassByRegular(ProPrefAdMobData proPrefAdMobData) {
+            int eventRemain = proPrefAdMobData.totalEventForNextViewing - proPrefAdMobData.totalEventCount;
+            if (nextTimeDiffInSeconds(proPrefAdMobData) < 0 && eventRemain < 0) {
+                return true;
+            }
+            return false;
+        }
+
+        private boolean isMaxTimeOver(ProPrefAdMobData proPrefAdMobData) {
+            long totalTimeFactor = proPrefAdMobData.totalTimeFactorSeconds - getCurrentSeconds();
+            int totalEventFactor = proPrefAdMobData.totalEventOffset - proPrefAdMobData.totalEventCount;
+            if (totalTimeFactor < 0 && totalEventFactor < 0) {
+                return true;
+            }
+            return false;
+        }
+
+        public boolean canShowAdView(boolean isForced) {
+            //var retVal = false
+            onSavePreference();
+            //onLogPrint(proPrefAdMobData)
+            if (canShowByForced(proPrefAdMobData) && isForced) {
+                return true;
+            }
+            if (canPassByRegular(proPrefAdMobData)) {
+                return true;
+            }
+            if (isMaxTimeOver(proPrefAdMobData)) {
+                return true;
+            }
+            return false;
+        }
+
+        public void onButtonClick() {
+            proPrefAdMobData.totalButtonClickEvent = proPrefAdMobData.totalButtonClickEvent + 1;
+            onEventArise();
+        }
+
+        public void onResume() {
+            proPrefAdMobData.totalViewResumeEvent = proPrefAdMobData.totalViewResumeEvent + 1;
+            onEventArise();
+        }
+
+        private void onEventArise() {
+            proPrefAdMobData.totalEventCount = proPrefAdMobData.totalEventCount + 1;
+            onSavePreference();
         }
     }
 
