@@ -11,6 +11,10 @@ public class ProConfigData {
     public int maxEvent;
     @SerializedName("min_ui_event_for_next_ad")
     public int minEvent;
+    @SerializedName("max_time_offset_for_next_ad")
+    public float maxTimeOffset;
+    @SerializedName("min_time_offset_for_next_ad")
+    public float minTimeOffset;
     @SerializedName("max_ui_event_offset_for_next_ad")
     public float maxEventOffset;
     @SerializedName("min_ui_event_offset_for_next_ad")
@@ -25,6 +29,8 @@ public class ProConfigData {
             int minTimeInSecond,
             int maxEvent,
             int minEvent,
+            float maxTimeOffset,
+            float minTimeOffset,
             float maxEventOffset,
             float minEventOffset,
             boolean isRandomizeAdId,

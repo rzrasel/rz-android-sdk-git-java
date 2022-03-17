@@ -9,9 +9,20 @@ class AdMobUtils {
         return random.nextInt((to - from) + 1) + from;
     }
 
+    public static double getRandomDouble(double from, double to) {
+        Random random = new Random();
+        return random.nextDouble() * (to - from) + from;
+    }
+
+    public static double getDecimalFormat(double value) {
+        String pattern = "#.##";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return Double.parseDouble(decimalFormat.format(value));
+    }
+
     public static float getRandomFloat(float from, float to) {
         Random random = new Random();
-        return getDecimalFormat(random.nextFloat() * (to - from) + from);
+        return random.nextFloat() * (to - from) + from;
     }
 
     public static float getDecimalFormat(float value) {
