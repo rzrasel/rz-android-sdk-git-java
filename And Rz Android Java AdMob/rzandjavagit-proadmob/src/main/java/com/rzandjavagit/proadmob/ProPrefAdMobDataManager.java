@@ -202,6 +202,10 @@ class ProPrefAdMobDataManager {
         }
     }
 
+    public void onResetPreference() {
+        onRestartPreference();
+    }
+
     public void onRestartPreference() {
         proPrefAdMobData = onSetupPrefData();
         onSavePreference();
