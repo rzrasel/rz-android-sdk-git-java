@@ -7,9 +7,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.rzandjavagit.proadmob.ProAdMobManager;
-import com.rzandjavagit.proadmob.ProConfigData;
+/*import com.rzandjavagit.proadmob.ProAdMobManager;
+import com.rzandjavagit.proadmob.ProConfigData;*/
 
 public class ActivityProAdMob extends AppCompatActivity {
     private Activity activity;
@@ -102,4 +103,8 @@ public class ActivityProAdMob extends AppCompatActivity {
         public void onAdFailedToShowFullScreenContent(String adError) {
         }
     }*/
+
+    private void showToast(String argMessage) {
+        Toast.makeText(context, argMessage, Toast.LENGTH_LONG).show();
+    }
 }
