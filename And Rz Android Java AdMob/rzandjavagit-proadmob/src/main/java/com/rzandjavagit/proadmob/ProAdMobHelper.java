@@ -104,7 +104,7 @@ class ProAdMobHelper {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError argLoadAdError) {
                         // Handle the error
-                        Log.i(TAG, "DEBUG_LOG_ERROR: onAdFailedToLoad " + argLoadAdError.getMessage());
+                        //Log.i(TAG, "DEBUG_LOG_ERROR: onAdFailedToLoad " + argLoadAdError.getMessage());
                         interstitialAd = null;
                         if (adEventListener != null) {
                             adEventListener.onAdFailedToLoad(argLoadAdError.getMessage());
