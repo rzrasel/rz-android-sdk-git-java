@@ -35,6 +35,8 @@ class ProPrefAdMobData {
     public double randEventOffset;
     @SerializedName("admob_total_event_offset")
     public int totalEventOffset;
+    @SerializedName("admob_shows_from_which_condition")
+    public String showsFromCondition;
     @SerializedName("admob_is_randomize_ad_id")
     public boolean isRandomizeAdId;
 
@@ -55,6 +57,7 @@ class ProPrefAdMobData {
             long totalTimeFactorSeconds,
             double randEventOffset,
             int totalEventOffset,
+            String showsFromCondition,
             boolean isRandomizeAdId
     ) {
         this.isInitialized = isInitialized;
@@ -73,6 +76,7 @@ class ProPrefAdMobData {
         this.totalTimeFactorSeconds = totalTimeFactorSeconds;
         this.randEventOffset = randEventOffset;
         this.totalEventOffset = totalEventOffset;
+        this.showsFromCondition = showsFromCondition;
         this.isRandomizeAdId = isRandomizeAdId;
     }
 }

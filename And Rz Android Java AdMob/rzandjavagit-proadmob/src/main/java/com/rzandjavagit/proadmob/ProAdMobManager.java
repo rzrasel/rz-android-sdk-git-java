@@ -48,8 +48,8 @@ public class ProAdMobManager {
         adViewDataManager.onResume();
     }
 
-    public void onClear() {
-        //proPreferences.clear()
+    public void onClearPreferences() {
+        proPrefAdMobDataManager.onClearPreferences();
     }
 
     public void onDebugPrint() {

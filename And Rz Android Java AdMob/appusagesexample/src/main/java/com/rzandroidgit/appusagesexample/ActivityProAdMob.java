@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.rzandjavagit.proadmob.ProAdMobManager;
 import com.rzandjavagit.proadmob.ProConfigData;
@@ -14,6 +16,7 @@ public class ActivityProAdMob extends AppCompatActivity {
     private Context context;
     private ProConfigData proConfigData;
     private ProAdMobManager proAdMobManager;
+    private Button sysBtnProAdMob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,9 @@ public class ActivityProAdMob extends AppCompatActivity {
         setContentView(R.layout.activity_pro_ad_mob);
         activity = this;
         context = this;
+        //
+        sysBtnProAdMob = (Button) findViewById(R.id.sysBtnProAdMob);
+        //
         proConfigData = new ProConfigData(
                 140,
                 70,
@@ -38,6 +44,34 @@ public class ActivityProAdMob extends AppCompatActivity {
                 .setConfigData(proConfigData)
                 .setIsDebug(proConfigData.isDebug)
                 .build(activity, context);
+        //
+        proAdMobManager.onDebugPrint();
+        //proAdMobManager.onClearPreferences();
+        sysBtnProAdMob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                proAdMobManager.onButtonClick();
+                onLoadAd();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        proAdMobManager.onResume();
+        onLoadAd();
+    }
+
+    private void onLoadAd() {
+        if (proAdMobManager.canShowAdView(false)) {
+            System.out.println("DEBUG_LOG_PRINT: you can show");
+            String admobAdUnitId = context.getResources().getString(R.string.admob_inters_ad_unit_id);
+            proAdMobManager.onLoadAd(admobAdUnitId);
+        } else {
+            System.out.println("DEBUG_LOG_PRINT: you can not show");
+        }
+        proAdMobManager.onDebugPrint();
     }
 
     private static class SetAdEventListener implements ProAdMobManager.OnAdEventListener {

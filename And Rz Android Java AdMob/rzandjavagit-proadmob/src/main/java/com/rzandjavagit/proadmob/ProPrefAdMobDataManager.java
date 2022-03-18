@@ -65,6 +65,7 @@ class ProPrefAdMobDataManager {
         int totalEventOffset = (int) AdMobUtils.getDecimalFormat(totalEventForNext / (int) Math.ceil(randEventOffset));
         //int totalEventOffset = (int) AdMobUtils.getDecimalFormat(totalEventForNext / randEventOffset);
         totalEventOffset = totalEventOffset * (int) Math.floor(randEventOffset);
+        String showsFromCondition = "none initialization";
         boolean isRandomizeAdId = proConfigData.isRandomizeAdId;
         //
         return new ProPrefAdMobData(
@@ -84,6 +85,7 @@ class ProPrefAdMobDataManager {
                 totalTimeFactorSeconds,
                 randEventOffset,
                 totalEventOffset,
+                showsFromCondition,
                 isRandomizeAdId
         );
     }
@@ -162,17 +164,25 @@ class ProPrefAdMobDataManager {
 
         public boolean canShowAdView(boolean isForced) {
             //var retVal = false
-            onSavePreference();
+            //onSavePreference();
             //onLogPrint(proPrefAdMobData)
             if (canShowByForced(proPrefAdMobData) && isForced) {
+                proPrefAdMobData.showsFromCondition = "if (canShowByForced(proPrefAdMobData) && isForced)";
+                onSavePreference();
                 return true;
             }
             if (canPassByRegular(proPrefAdMobData)) {
+                proPrefAdMobData.showsFromCondition = "if (canPassByRegular(proPrefAdMobData))";
+                onSavePreference();
                 return true;
             }
             if (isMaxTimeOver(proPrefAdMobData)) {
+                proPrefAdMobData.showsFromCondition = "if (isMaxTimeOver(proPrefAdMobData))";
+                onSavePreference();
                 return true;
             }
+            proPrefAdMobData.showsFromCondition = "condition not matched, can not show";
+            onSavePreference();
             return false;
         }
 
@@ -205,6 +215,10 @@ class ProPrefAdMobDataManager {
         setRemainTimeSeconds();
         String jsonString = getJson(proPrefAdMobData);
         proPreferences.putString(PrefKey.ADMOB_JSON_MODEL_CLASS_DATA.label, jsonString);
+    }
+
+    public void onClearPreferences() {
+        proPreferences.clear();
     }
 
     public void onLogPrint() {
