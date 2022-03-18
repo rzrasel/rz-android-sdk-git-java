@@ -13,6 +13,7 @@ android {
         versionName rootProject.ext.coreConfig.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
         //
         def date = new Date()
         def formattedDate = date.format("yyyy-MM-dd")
@@ -45,6 +46,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
     //
     /*gradle customisation*/
+    implementation "androidx.multidex:multidex:2.0.1"
     // ADMOB
     implementation "com.google.android.gms:play-services-ads:20.6.0"
     // GSON
