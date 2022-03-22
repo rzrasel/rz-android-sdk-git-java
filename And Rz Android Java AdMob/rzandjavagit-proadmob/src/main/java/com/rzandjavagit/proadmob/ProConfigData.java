@@ -21,6 +21,8 @@ public class ProConfigData {
     public double minEventOffset;
     @SerializedName("is_randomize_ad_id")
     public boolean isRandomizeAdId;
+    @SerializedName("is_firebase_log_event")
+    public boolean isFirebaseLogEvent;
     @SerializedName("is_debug_mode")
     public boolean isDebug;
 
@@ -34,6 +36,7 @@ public class ProConfigData {
             double maxEventOffset,
             double minEventOffset,
             boolean isRandomizeAdId,
+            boolean isFirebaseLogEvent,
             boolean isDebug
     ) {
         this.maxTimeInSecond = maxTimeInSecond;
@@ -45,6 +48,7 @@ public class ProConfigData {
         this.maxEventOffset = maxEventOffset;
         this.minEventOffset = minEventOffset;
         this.isRandomizeAdId = isRandomizeAdId;
+        this.isFirebaseLogEvent = isFirebaseLogEvent;
         this.isDebug = isDebug;
     }
 }

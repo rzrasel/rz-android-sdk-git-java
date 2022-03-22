@@ -87,6 +87,7 @@ public class AppApplication extends Application {
                     2.6,
                     2.2,
                     true,
+                    true,
                     false
             );
             return this;

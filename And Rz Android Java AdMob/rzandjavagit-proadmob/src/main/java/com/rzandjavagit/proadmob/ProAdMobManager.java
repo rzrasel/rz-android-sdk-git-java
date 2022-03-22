@@ -12,6 +12,7 @@ public class ProAdMobManager {
     private OnAdEventListener adEventListener;
     private ProPreferences proPreferences;
     private ProAdMobHelper proAdMobHelper;
+    private ProFirebaseLogEvent proFirebaseLogEvent;
     private ProPrefAdMobDataManager proPrefAdMobDataManager;
     private final int timeSecondMax = 70;
     private final int timeSecondMin = 30;
@@ -30,7 +31,8 @@ public class ProAdMobManager {
         //
         new OnSetupInitialization()
                 .onSetupPrefAdMobDataManager()
-                .onSetupAdMobHelper();
+                .onSetupAdMobHelper()
+                .onSetupFirebaseLogEvent();
     }
 
     public boolean canShowAdView(boolean isForced) {
@@ -70,6 +72,9 @@ public class ProAdMobManager {
             return;
         }
         proAdMobHelper.onLoadAd(admobAdUnitId);
+        ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_FOR_LOAD;
+        String logEventMessage = "admob-state: Request for admob";
+        proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
     }
 
     public void onPrepareAd(AdRequest adRequest, String admobAdUnitId) {
@@ -77,6 +82,9 @@ public class ProAdMobManager {
             return;
         }
         proAdMobHelper.onPrepareAd(adRequest, admobAdUnitId);
+        ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_FOR_LOAD;
+        String logEventMessage = "admob-state: Request for admob";
+        proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
     }
 
     public void showAd() {
@@ -128,6 +136,7 @@ public class ProAdMobManager {
                         2.6,
                         2.2,
                         true,
+                        true,
                         false
                 );
             }
@@ -142,15 +151,28 @@ public class ProAdMobManager {
                     .setIsDebug(isDebug);
             return this;
         }
+
+        private OnSetupInitialization onSetupFirebaseLogEvent() {
+            proFirebaseLogEvent = new ProFirebaseLogEvent.Builder()
+                    .isLogEvent(proConfigData.isFirebaseLogEvent)
+                    .build(activity, context);
+            return this;
+        }
     }
 
     private class SetAdEventListener implements ProAdMobHelper.OnAdEventListener {
         public void onAdLoaded() {
             adEventListener.onAdLoaded();
+            ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_SUCCESS_TO_LOAD;
+            String logEventMessage = "admob-state: onAdLoaded()";
+            proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
         }
 
         public void onAdFailedToLoad(String adError) {
             adEventListener.onAdFailedToLoad(adError);
+            ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_FAILED_TO_LOAD;
+            String logEventMessage = "admob-state: onAdFailedToLoad(String adError) " + adError;
+            proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
         }
 
         public void onAdShowedFullScreenContent() {
