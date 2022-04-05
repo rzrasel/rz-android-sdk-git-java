@@ -1,6 +1,7 @@
 package com.rzandjavagit.proadmob;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Random;
 
 class AdMobUtils {
@@ -15,9 +16,10 @@ class AdMobUtils {
     }
 
     public static double getDecimalFormat(double value) {
-        String pattern = "#.##";
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
-        return Double.parseDouble(decimalFormat.format(value));
+        /*String pattern = "#.##";
+        NumberFormat decimalFormat = new DecimalFormat(pattern);
+        return Double.parseDouble(decimalFormat.format(value));*/
+        return Double.parseDouble(String.format("%.2f", value));
     }
 
     public static float getRandomFloat(float from, float to) {
@@ -26,8 +28,9 @@ class AdMobUtils {
     }
 
     public static float getDecimalFormat(float value) {
-        String pattern = "#.##";
+        /*String pattern = "#.##";
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
-        return Float.parseFloat(decimalFormat.format(value));
+        return Float.parseFloat(decimalFormat.format(value));*/
+        return Float.parseFloat(String.format("%.2f", value));
     }
 }
