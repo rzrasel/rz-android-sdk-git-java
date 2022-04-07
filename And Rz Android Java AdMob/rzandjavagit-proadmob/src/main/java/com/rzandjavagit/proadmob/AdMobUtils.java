@@ -19,7 +19,8 @@ class AdMobUtils {
         /*String pattern = "#.##";
         NumberFormat decimalFormat = new DecimalFormat(pattern);
         return Double.parseDouble(decimalFormat.format(value));*/
-        return Double.parseDouble(String.format("%.2f", value));
+        //return Double.parseDouble(String.format("%.2f", value));
+        return value;
     }
 
     public static float getRandomFloat(float from, float to) {
@@ -31,6 +32,7 @@ class AdMobUtils {
         /*String pattern = "#.##";
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return Float.parseFloat(decimalFormat.format(value));*/
-        return Float.parseFloat(String.format("%.2f", value));
+        //return Float.parseFloat(String.format("%.2f", value));
+        return value;
     }
 }

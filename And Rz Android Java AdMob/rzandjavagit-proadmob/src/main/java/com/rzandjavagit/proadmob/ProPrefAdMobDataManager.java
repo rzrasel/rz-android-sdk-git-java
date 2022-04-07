@@ -40,7 +40,7 @@ class ProPrefAdMobDataManager {
                 .withPrefsName(context.getPackageName())
                 .withMode(ProPreferences.Mode.PRIVATE)
                 .withDefaultPrefs(false)
-                .build();
+                .build(context);
     }
 
     public ProPrefAdMobData onSetupPrefData() {

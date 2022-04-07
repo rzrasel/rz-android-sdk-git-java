@@ -310,7 +310,8 @@ class ProPreferences {
             return this;
         }
 
-        public ProPreferences build() {
+        public ProPreferences build(Context argContext) {
+            context = argContext;
             if (context == null) {
                 throw new RuntimeException("Context not set, please set context before building the Prefs instance.");
             }
