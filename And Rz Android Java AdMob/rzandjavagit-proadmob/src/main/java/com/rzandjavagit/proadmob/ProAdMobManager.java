@@ -68,22 +68,28 @@ public class ProAdMobManager {
     }
 
     public void onLoadAd(String admobAdUnitId) {
+        String logEventMessage = "admob-state: Can't request for admob";
+        ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_DEBUG_MODE;
         if (isDebug) {
+            proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
             return;
         }
         proAdMobHelper.onLoadAd(admobAdUnitId);
-        ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_FOR_LOAD;
-        String logEventMessage = "admob-state: Request for admob";
+        logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_FOR_LOAD;
+        logEventMessage = "admob-state: Request for admob";
         proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
     }
 
     public void onPrepareAd(AdRequest adRequest, String admobAdUnitId) {
+        String logEventMessage = "admob-state: Can't request for admob";
+        ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_DEBUG_MODE;
         if (isDebug) {
+            proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
             return;
         }
         proAdMobHelper.onPrepareAd(adRequest, admobAdUnitId);
-        ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_FOR_LOAD;
-        String logEventMessage = "admob-state: Request for admob";
+        logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_REQUEST_FOR_LOAD;
+        logEventMessage = "admob-state: Request for admob";
         proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
     }
 
@@ -165,14 +171,14 @@ public class ProAdMobManager {
             adEventListener.onAdLoaded();
             ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_SUCCESS_TO_LOAD;
             String logEventMessage = "admob-state: onAdLoaded()";
-            proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
+            //proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
         }
 
         public void onAdFailedToLoad(String adError) {
             adEventListener.onAdFailedToLoad(adError);
             ProFirebaseLogEvent.LogEvent logEvent = ProFirebaseLogEvent.LogEvent.ADMOB_FAILED_TO_LOAD;
             String logEventMessage = "admob-state: onAdFailedToLoad(String adError) " + adError;
-            proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
+            //proFirebaseLogEvent.onLogEvent(logEvent, logEventMessage);
         }
 
         public void onAdShowedFullScreenContent() {

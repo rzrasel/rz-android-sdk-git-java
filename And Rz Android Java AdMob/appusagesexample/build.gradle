@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.rzandroidgit.appusagesexample"
         minSdk 19
-        targetSdk 31
+        targetSdk 32
         versionCode rootProject.ext.coreConfig.versionCode
         versionName rootProject.ext.coreConfig.versionName
 

@@ -2,10 +2,10 @@ project.ext {
     // Version
     supportVersion = "30.0.3"
     coreConfig = [
-            compileSdk          : 31,
+            compileSdk          : 32,
             minSdk              : 16,
-            targetSdk           : 31,
-            buildToolsVersion   : "31.0.0",
+            targetSdk           : 32,
+            buildToolsVersion   : "32.0.0",
             gradleVersion       : "7.0.4",
             APP_NAME            : "Rz Android Java Git SDK",
             versionCode         : 106,

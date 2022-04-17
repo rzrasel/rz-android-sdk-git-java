@@ -70,6 +70,7 @@ public class ProFirebaseLogEvent {
     }
 
     public enum LogEvent {
+        //ADMOB_REQUEST_DEBUG_MODE("admob_request_"),
         ADMOB_REQUEST_FOR_LOAD("admob_request_"),
         ADMOB_REQUEST_DEBUG_MODE("admob_request_debug_"),
         ADMOB_SUCCESS_TO_LOAD("admob_success_"),
