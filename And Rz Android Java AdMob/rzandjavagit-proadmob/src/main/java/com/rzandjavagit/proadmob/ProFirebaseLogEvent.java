@@ -20,6 +20,7 @@ public class ProFirebaseLogEvent {
         this.activity = builder.activity;
         this.context = builder.context;
         this.isLogEvent = builder.isLogEvent;
+        firebaseAnalytics = FirebaseAnalytics.getInstance(context);
     }
 
     public void onLogEvent(LogEvent logEvent, String logMessage) {
@@ -50,9 +51,9 @@ public class ProFirebaseLogEvent {
     }
 
     private void onLogEventRun(String logEventFormattedDate, String logMessage) {
-        if (!isLogEvent) {
+        /*if (!isLogEvent) {
             return;
-        }
+        }*/
         analyticsBundle = new Bundle();
         analyticsBundle.putString(logEventFormattedDate, logMessage);
         firebaseAnalytics.logEvent(logEventFormattedDate, analyticsBundle);
