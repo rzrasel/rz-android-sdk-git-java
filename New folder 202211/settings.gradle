@@ -1,0 +1,28 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Rz Android Java Git SDK"
+include ":app"
+include ":rzandjavagit"
+include ":rzandjavagit-core"
+//
+include ":rzandjavagit-proaudiorecorder"
+include ":rzandjavagit-proexternalstorage"
+include ":rzandjavagit-prohttprequest"
+include ":rzandjavagit-prointernet"
+include ":rzandjavagit-propermission"
+include ":rzandjavagit-propreferences"
+include ":rzandjavagit-prospotlightview"
+include ":rzandjavagit-sparkedslidingview"
+include ":rzandjavagit-volleyhelper"

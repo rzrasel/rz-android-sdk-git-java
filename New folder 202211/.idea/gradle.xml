@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/rzandjavagit" />
+            <option value="$PROJECT_DIR$/rzandjavagit-core" />
+            <option value="$PROJECT_DIR$/rzandjavagit-proaudiorecorder" />
+            <option value="$PROJECT_DIR$/rzandjavagit-proexternalstorage" />
+            <option value="$PROJECT_DIR$/rzandjavagit-prohttprequest" />
+            <option value="$PROJECT_DIR$/rzandjavagit-prointernet" />
+            <option value="$PROJECT_DIR$/rzandjavagit-propermission" />
+            <option value="$PROJECT_DIR$/rzandjavagit-propreferences" />
+            <option value="$PROJECT_DIR$/rzandjavagit-prospotlightview" />
+            <option value="$PROJECT_DIR$/rzandjavagit-sparkedslidingview" />
+            <option value="$PROJECT_DIR$/rzandjavagit-volleyhelper" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

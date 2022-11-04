@@ -1,0 +1,75 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.rzandroidgit.appusagesexample"
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.rzandroidgit.appusagesexample"
+        minSdk 21
+        targetSdk 33
+        /*versionCode 1
+        versionName "1.0"*/
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //
+        def date = new Date()
+        def formattedDate = date.format("yyyy-MM-dd")
+        //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v-$rootProject.versionName"
+        //def apkName = "$project.name" + "-" + formattedDate + "-v" + defaultConfig.versionName
+        setProperty("archivesBaseName", "$apkName")
+        //
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+
+    implementation "androidx.appcompat:appcompat:1.5.1"
+    implementation "com.google.android.material:material:1.7.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test.ext:junit:1.1.3"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    //
+    implementation "androidx.multidex:multidex:2.0.1"
+    //
+    //
+    //
+    implementation project(path: ":rzandjavagit")
+    implementation project(path: ":rzandjavagit-core")
+    //
+    /*def sdkVersion = "1.0.3"
+    implementation(name:"rzandjavagit-propermission-v-${sdkVersion}", ext:"aar")*/
+    //
+    implementation project(path: ":rzandjavagit-proaudiorecorder")
+    implementation project(path: ":rzandjavagit-proexternalstorage")
+    implementation project(path: ":rzandjavagit-prohttprequest")
+    implementation project(path: ":rzandjavagit-prointernet")
+    implementation project(path: ":rzandjavagit-propermission")
+    implementation project(path: ":rzandjavagit-propreferences")
+    implementation project(path: ":rzandjavagit-prospotlightview")
+    implementation project(path: ":rzandjavagit-sparkedslidingview")
+    implementation project(path: ":rzandjavagit-volleyhelper")
+}
