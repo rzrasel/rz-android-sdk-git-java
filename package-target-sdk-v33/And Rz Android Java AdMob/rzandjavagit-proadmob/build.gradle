@@ -3,6 +3,7 @@ plugins {
 }
 
 project.ext.moduleName = "rzandjavagit-proadmob"
+project.ext.artifactId = "rzandjavagit-proadmob"
 
 android {
     compileSdk 33
@@ -18,7 +19,7 @@ android {
         def formattedDate = date.format("yyyy-MM-dd")
         //def apkName = "$rootProject.APP_NAME" + "-" + formattedDate + "-v" + defaultConfig.versionName
         //def apkName = "$project.ext.coreConfig.APP_NAME" + "-" + formattedDate + "-v-" + defaultConfig.versionName
-        def apkName = "$moduleName" + "-v-" + rootProject.versionName
+        def apkName = "$artifactId" + "-v-" + rootProject.versionName
         setProperty("archivesBaseName", "$apkName")
     }
 
