@@ -6,6 +6,15 @@ android {
     namespace "com.rzandroidgit.appusagesexample"
     compileSdk 33
 
+    signingConfigs {
+        config {
+            storeFile file("../../../credential/rz-package-credential.jks")
+            keyAlias = "rzpackagecredential"
+            storePassword "rzPackageCrEDential"
+            keyPassword "rzPackageCrEDential"
+        }
+    }
+
     defaultConfig {
         applicationId "com.rzandroidgit.appusagesexample"
         minSdk 21
@@ -28,9 +37,19 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            debuggable true
             minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            shrinkResources false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+        release {
+            debuggable false
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     compileOptions {
